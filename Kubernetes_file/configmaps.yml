@@ -1,0 +1,20 @@
+kind: Pod
+apiVersion: v1
+metadata:
+        name: myconfigmap
+spec:
+        containers:
+                - name: c00
+                  image: nginx
+                  command: ["/bin/bash", "-c", "while true; do echo Hello sai; sleep 5; done"]
+                  volumeMounts:
+                          - name: myvol
+                            mountPath: "/tmp/c1dir"
+        volumes:
+                          - name: myvol
+                            configMap:
+                                    name: mymap
+                                    items:
+                                            - key: samplefile
+                                              path: samplefile
+

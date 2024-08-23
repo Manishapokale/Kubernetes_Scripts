@@ -1,0 +1,26 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+        name: deploy
+spec:
+        replicas: 1
+        selector:
+                matchLabels:
+                        app: hot
+        template:
+                metadata:
+                        labels:
+                                app: hot
+                spec:
+                        containers:
+                                - name: c00
+                                  image: ubuntu
+                                  command: ["/bin/bash", "-c", "while true; do echo Hello Sai; sleep 10; done"]
+                                  volumeMounts:
+                                          - name: myvol
+                                            mountPath: "/tmp/c1dir"
+                        volumes:
+                                - name: myvol
+                                  persistentVolumeClaim:
+                                          claimName: mypvc
+

@@ -1,0 +1,25 @@
+kind: Pod
+apiVersion: v1
+metadata:
+        name: hostpath
+spec:
+        containers:
+                - name: c00
+                  image: httpd
+                  command: ["/bin/bash", "-c", "sleep 1000"]
+                  volumeMounts:
+                          - name: myvol
+                            mountPath: "/tmp/c1dir"
+
+                - name: c01
+                  image: nginx
+                  command: ["/bin/bash", "-c", "sleep 1000"]
+                  volumeMounts:
+                          - name: myvol
+                            mountPath: "/tmp/c2dir"
+
+        volumes:
+                - name: myvol
+                  hostPath:
+                          path: "/tmp/hostdir"
+

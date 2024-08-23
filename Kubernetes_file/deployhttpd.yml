@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+        name: mydeployment
+spec:
+        replicas: 1
+        selector:
+                matchLabels:
+                        objtype: deployment
+        template:
+                metadata:
+                        labels:
+                                objtype: deployment
+                spec:
+                        containers:
+                                - name: c00
+                                  image: nginx
+                                  ports:
+                                          - containerPort: 80
+

@@ -1,0 +1,11 @@
+kind: LimitRange
+apiVersion: v1
+metadata:
+        name: test
+spec:
+        limits:
+                - default:
+                        cpu: 1000m
+                  defaultRequest:
+                          cpu: 500m
+                  type: Container

@@ -1,0 +1,9 @@
+kind: Pod
+apiVersion: v1
+metadata:
+        name: mypod
+spec:
+        containers:
+                - name: coo
+                  image: nginx
+                  command: ["/bin/bash", "-c", "while true; do echo hello sai; sleep 10; done"]
